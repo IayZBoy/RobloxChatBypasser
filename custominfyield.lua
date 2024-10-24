@@ -4537,6 +4537,7 @@ CMDs[#CMDs + 1] = {NAME = 'bring [player] (TOOL)', DESC = 'Brings a player (YOU 
 CMDs[#CMDs + 1] = {NAME = 'fastbring [player] (TOOL)', DESC = 'Brings a player (less reliable) (YOU NEED A TOOL)'}
 CMDs[#CMDs + 1] = {NAME = 'teleport / tp [player] [player] (TOOL)', DESC = 'Teleports a player to another player (YOU NEED A TOOL)'}
 CMDs[#CMDs + 1] = {NAME = 'fastteleport / fasttp [player] [player] (TOOL)', DESC = 'Teleports a player to another player (less reliable) (YOU NEED A TOOL)'}
+CMDs[#CMDs + 1] = {NAME = 'selffling', DESC = 'fling yourself'}
 CMDs[#CMDs + 1] = {NAME = 'flyfling', DESC = 'Basically the invisfling command but not invisible'}
 CMDs[#CMDs + 1] = {NAME = 'unflyfling', DESC = 'Disables the flyfling command'}
 CMDs[#CMDs + 1] = {NAME = 'powerfling', DESC = 'Basically fling but no spinning'}
@@ -11371,6 +11372,22 @@ addcmd('joinlogs',{'jlogs'},function(args, speaker)
 	selectChat.BackgroundColor3 = currentShade3
 	selectJoin.BackgroundColor3 = currentShade2
 	logs:TweenPosition(UDim2.new(0, 0, 1, -265), "InOut", "Quart", 0.3, true, nil)
+end)
+
+addcmd("selffling", {"sfling"}, function(args, speaker)
+	local strength = args[1] or 250 -- Get the strength from the first argument
+	execCmd("sit")
+	                
+	-- Ensure that the player exists
+	local character = game.Players.LocalPlayer.Character
+	
+	-- Apply fling
+	local rootPart = character.HumanoidRootPart
+	rootPart.Velocity = Vector3.new(
+	    math.random(-strength, strength), 
+	    strength, 
+	    math.random(-strength, strength)
+	)
 end)
 
 addcmd("flyfling", {}, function(args, speaker)
