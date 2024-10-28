@@ -17,7 +17,9 @@ if not game:IsLoaded() then
     notLoaded:Destroy()
 end
 
-local thefakelatestversion = game:GetService("HttpService"):JSONDecode(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/version')).Version
+HttpService = cloneref(game:GetService("HttpService"))
+
+local thefakelatestversion = HttpService:JSONDecode(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/version')).Version
 
 currentVersion = thefakelatestversion
 
@@ -1910,7 +1912,6 @@ IYMouse = Players.LocalPlayer:GetMouse()
 PlayerGui = Players.LocalPlayer:FindFirstChildWhichIsA("PlayerGui")
 UserInputService = cloneref(game:GetService("UserInputService"))
 TweenService = cloneref(game:GetService("TweenService"))
-HttpService = cloneref(game:GetService("HttpService"))
 MarketplaceService = cloneref(game:GetService("MarketplaceService"))
 RunService = cloneref(game:GetService("RunService"))
 TeleportService = cloneref(game:GetService("TeleportService"))
