@@ -17,7 +17,7 @@ if not game:IsLoaded() then
     notLoaded:Destroy()
 end
 
-local thefakelatestversion = HttpService:JSONDecode(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/version')).Version
+local thefakelatestversion = game:GetService("HttpService"):JSONDecode(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/version')).Version
 
 currentVersion = thefakelatestversion
 
