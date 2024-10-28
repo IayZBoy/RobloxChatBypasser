@@ -19,9 +19,12 @@ end
 
 HttpService = cloneref(game:GetService("HttpService"))
 
-local thefakelatestversion = HttpService:JSONDecode(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/version')).Version
+local success12345, latestVersionInfo12345 = pcall(function() 
+	local versionJson = game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/version')
+	return HttpService:JSONDecode(versionJson)
+end)
 
-currentVersion = thefakelatestversion
+currentVersion = latestVersionInfo12345.Version
 
 Holder = Instance.new("Frame")
 Title = Instance.new("TextLabel")
